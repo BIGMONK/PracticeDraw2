@@ -13,13 +13,14 @@ public class PageFragment extends Fragment {
     @LayoutRes int sampleLayoutRes;
     @LayoutRes int practiceLayoutRes;
 
-    public static PageFragment newInstance(@LayoutRes int sampleLayoutRes, @LayoutRes int practiceLayoutRes) {
-        PageFragment fragment = new PageFragment();
-        Bundle args = new Bundle();
-        args.putInt("sampleLayoutRes", sampleLayoutRes);
-        args.putInt("practiceLayoutRes", practiceLayoutRes);
-        fragment.setArguments(args);
-        return fragment;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        if (args != null) {
+            sampleLayoutRes = args.getInt("sampleLayoutRes");
+            practiceLayoutRes = args.getInt("practiceLayoutRes");
+        }
     }
 
     @Nullable
@@ -38,13 +39,13 @@ public class PageFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle args = getArguments();
-        if (args != null) {
-            sampleLayoutRes = args.getInt("sampleLayoutRes");
-            practiceLayoutRes = args.getInt("practiceLayoutRes");
-        }
+    public static PageFragment newInstance(@LayoutRes int sampleLayoutRes, @LayoutRes int practiceLayoutRes) {
+        PageFragment fragment = new PageFragment();
+        Bundle args = new Bundle();
+        args.putInt("sampleLayoutRes", sampleLayoutRes);
+        args.putInt("practiceLayoutRes", practiceLayoutRes);
+        fragment.setArguments(args);
+        return fragment;
     }
+
 }
