@@ -20,7 +20,7 @@ public class Sample12PathEffectView extends View {
     Path path = new Path();
     PathEffect cornerPathEffect = new CornerPathEffect(20);
     PathEffect discretePathEffect = new DiscretePathEffect(20, 5);
-    PathEffect dashPathEffect = new DashPathEffect(new float[]{20, 10, 5, 10}, 0);
+    PathEffect dashPathEffect = new DashPathEffect(new float[]{20, 10, 5, 10},0);
     PathEffect pathDashPathEffect;
     PathEffect sumPathEffect = new SumPathEffect(dashPathEffect, discretePathEffect);
     PathEffect composePathEffect = new ComposePathEffect(dashPathEffect, discretePathEffect);

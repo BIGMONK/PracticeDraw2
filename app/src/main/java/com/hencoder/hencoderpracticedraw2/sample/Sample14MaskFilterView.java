@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.EmbossMaskFilter;
 import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
@@ -41,12 +42,14 @@ public class Sample14MaskFilterView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         paint.setMaskFilter(maskFilter1);
         canvas.drawBitmap(bitmap, 100, 50, paint);
 
-        paint.setMaskFilter(maskFilter2);
+        paint.setMaskFilter(new EmbossMaskFilter(new float[]{0, 1, 1}, 0.2f, 8, 10));
         canvas.drawBitmap(bitmap, bitmap.getWidth() + 200, 50, paint);
+
+        paint.setMaskFilter(maskFilter2);
+        canvas.drawBitmap(bitmap, bitmap.getWidth()*2 +300, 50, paint);
 
         paint.setMaskFilter(maskFilter3);
         canvas.drawBitmap(bitmap, 100, bitmap.getHeight() + 100, paint);

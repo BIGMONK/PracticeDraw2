@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class Sample15FillPathView extends View {
+    private static final String TAG = "Sample15FillPathView";
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Path path = new Path();
@@ -37,6 +38,7 @@ public class Sample15FillPathView extends View {
         path.rLineTo(150, 80);
 
         pathPaint.setStyle(Paint.Style.STROKE);
+
     }
 
     @Override
@@ -49,6 +51,8 @@ public class Sample15FillPathView extends View {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(0);
         paint.getFillPath(path, path1);
+        path1.close();
+
         canvas.drawPath(path, paint);
 
         canvas.save();
@@ -61,6 +65,7 @@ public class Sample15FillPathView extends View {
         paint.setStyle(Paint.Style.STROKE);
         // 第二处：设置 Style 为 STROKE 后再获取 Path
         paint.getFillPath(path, path2);
+        path2.close();
         canvas.drawPath(path, paint);
         canvas.restore();
 
@@ -74,6 +79,7 @@ public class Sample15FillPathView extends View {
         paint.setStrokeWidth(40);
         // 第三处：Style 为 STROKE 并且线条宽度为 40 时的 Path
         paint.getFillPath(path, path3);
+        path3.close();
         canvas.drawPath(path, paint);
         canvas.restore();
 
